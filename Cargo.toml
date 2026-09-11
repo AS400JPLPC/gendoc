@@ -1,0 +1,43 @@
+[package]
+name = "gen_doc"
+version = "0.1.0"
+edition = "2021"
+
+
+[workspace]
+resolver = "3"
+
+
+[dependencies]
+glib = "0.22.9"
+gtk = "0.19.0"
+libc = "0.2.189"
+pango = "0.19"
+rusqlite = "0.40.2"
+vte-sys = "0.2.2"
+
+
+
+[features]
+# Active  le binaire de test Ptest
+gendoc  = []
+dspdoc  = []
+dltdoc  = []
+TermDspDoc  = []
+
+
+[[bin]]
+name = "gendoc"
+path = "src/bin/gendoc.rs"
+
+[[bin]]
+name = "dspdoc"
+path = "src/bin/dspdoc.rs"
+
+[[bin]]
+name = "dltdoc"
+path = "src/bin/dltdoc.rs"
+
+[[bin]]
+name = "TermDspDoc"
+path = "src/bin/TermDspDoc.rs"

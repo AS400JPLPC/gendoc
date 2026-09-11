@@ -1,0 +1,8 @@
+    1.00 ###  Définition AIDE  ###*
+    
+                                                                                                                                                                                                                                           
+    1.00 *    Astérix    *          = titre                                                                                                                                                                                                                 
+    2.00 .    Point      .          = text                                                                                                                                                                                                                       
+    3.00 -    Tiret      -          = champ principaux                                                                                                                                                                                                                       
+    4.00 !    exlamation !          = remarque 
+    5.00      blank                 = text                                                                                                                                                                                                     

@@ -1,0 +1,89 @@
+* def_panel
+- Définition et utilisation des panneaux
+. Ce module permet de définir des panneaux (PANEL) pour organiser des éléments d'interface
+  comme des labels, champs, boutons, menus, ou grilles.
+  
+? -- Champs principaux du panneau --
+- Name      : Nom unique du panneau (ex: "fp01").
+- PosX      : Position X du panneau (coordonnée horizontale).
+- PosY      : Position Y du panneau (coordonnée verticale).
+- Lines     : Nombre de lignes du panneau (hauteur).
+- Cols      : Nombre de colonnes du panneau (largeur).
+- Border    : Affiche une bordure autour du panneau (true/false).
+- Title     : Titre du panneau (affiché en haut si Border=true).
+  
+? -- Fonctions clés (F1 à F24) --
+. Chaque fonction (F1 à F24) peut être configurée avec :
+- F1, F2, ..., F24       : Identifiant de la touche de fonction.
+- F1shw, F2shw, ...      : Affiche ou non la touche (true/false).
+- F1chk, F2chk, ...      : Active ou non la touche (true/false).
+- F1txt, F2txt, ...      : Texte associé à la touche (ex: "Aide").
+  
+? -- Raccourcis Ctrl (Ctrl+A à Ctrl+Z) --
+. Chaque raccourci Alt peut être configuré avec :
+- CtrlA, CtrlB, ..., CtrlZ : Identifiant du raccourci (ex: Ctrl+A).
+- CtrlAshw, CtrlBshw, ... : Affiche ou non le raccourci (true/false).
+- CtrlAchk, CtrlBchk, ... : Active ou non le raccourci (true/false).
+- CtrlAtxt, CtrlBtxt, ... : Texte associé au raccourci.(ex: "Attn")
+  
+? -- Raccourcis Alt (Alt+A à Alt+Z) --
+. Chaque raccourci Alt peut être configuré avec :
+- AltA, ..., AltZ       : Identifiant du raccourci (ex: Alt+A).
+- AltAshw, AltBshw, ... : Affiche ou non le raccourci (true/false).
+- AltAchk, AltBchk, ... : Active ou non le raccourci (true/false).
+- AltAtxt, AltBtxt, ... : Texte associé au raccourci.
+  
+? -- Raccourcis PageDown --
+. Chaque raccourci PageDown peut être configuré avec :
+- PageDown                : Identifiant du raccourci (ex: PageDown).
+- PgDwnshw, PgDwnshw, ... : Affiche ou non le raccourci (true/false).
+- PgDwnchk, PgDwnchk, ... : Active ou non le raccourci (true/false).
+- PgDwntxt, PgDwntxt, ... : Texte associé au raccourci
+  
+? -- Raccourcis PageUp --
+. Chaque raccourci PageUp peut être configuré avec :
+- PageUp                 : Identifiant du raccourci (ex: PageUp).
+- PgUpshw, PgUpshw, ...  : Affiche ou non le raccourci (true/false).
+- PgUpchk, PgUpchk, ...  : Active ou non le raccourci (true/false).
+- PgUptxt, PgUptxt, ...  : Texte associé au raccourci
+  
+? -- Exemple d'utilisation --
+  // Définition d'un panneau avec un titre et une bordure
+  let my_panel = PANEL {
+  name: "Facture",// facture, Commande ...
+  posx: 10,
+  posy: 5,
+  lines: 20, // max42
+  cols:  80, // max160
+  border: Simple,
+  title: "Saisie Client",
+  F3.shw: true,
+  F3.chk: false,
+  F3.txt: "Exit",
+  F9:true,
+  F9:shw: true,
+  F9:chk: true,
+  F9txt: "Enrg",
+  ...
+  };
+  
+_ -- Remarques
+! "name" non du panel première lettre en majuscule
+! Les champs PosX et PosY définissent la position du panneau à l'écran.
+! Lines et Cols définissent la taille du panneau.
+! Border est optionnel mais ffortement recommandé pour une meilleure lisibilité.
+! Title du panel.
+! Les touches de fonction (F1-F24) et raccourcis Alt ainsi Crtl sont facultatifs.
+! Chaque touche ou raccourci peut être désactivé (chk=false) ou masqué (shw=false),
+  active par défaut si elle est choisie
+  
+_ -- Les touches de fonction réservées:
+! F1 Help affiche l'aide et la fonctionalite du programme
+! F4 call du progamme ex: mise à jour du programme pays  zone italic bleu
+! CtrlA fonction Attn
+! CtrlC copy for clipboard
+! CtrlV paste
+! Ctrlb copy interne du buffer
+! CtrlH affiche l'aide sur la zone de saisie
+! CrtlP position sur la zone de saisie avec la sourie
+! CrtlZ resize screen (lors d'un redimension incongrue)
