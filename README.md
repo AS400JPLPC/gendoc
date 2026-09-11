@@ -83,7 +83,7 @@ voir  Menu.sh
 │   ├── lib.rs
 │   └── terminal.rs		# Gestion du terminal et des commandes
 └── TermDspDoc			# Binaires compilés Treminal GTK3-VTE3
-
+```
 ---
 
 ---
@@ -160,14 +160,6 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 
 
 
-![doc01](./assets/2026-09-11_18-26-16_doc01.png)
-
-Voici la suite de mon texte.
-
-![doc02](./assets/2026-09-11_18-27-33_doc02.png)
-
-
-
 ## 📜 **Licence**
 
 Ce projet est sous licence  Voir le fichier [LICENSE](LICENSE) pour plus de détails.
@@ -187,5 +179,13 @@ Ce projet est sous licence  Voir le fichier [LICENSE](LICENSE) pour plus de dét
   
   
   
-remerciement  à IA de m'avoir aidé  Mistral  IA google  pour clarifier certaine fonction
->>>>>>> 8bf46c1 (maj_20260911_18:15)
+remerciement  à IA de m'avoir aidé  Mistral  IA google  pour clarifier certaine fonction  
+  
+  
+
+
+![doc01](./assets/2026-09-11_18-26-16_doc01.png)
+
+
+
+![doc02](./assets/2026-09-11_18-27-33_doc02.png)
