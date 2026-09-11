@@ -160,11 +160,11 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 
 ---
 <BR/> 
-![2026-09-11_18-26-16_doc01](asset/2026-09-11_18-26-16_doc01.png)  
+![2026-09-11_18-26-16_doc01](./asset/2026-09-11_18-26-16_doc01.png)  
 <BR/> <BR/> 
   
 <BR/> 
-![2026-09-11_18-27-33_doc02](asset/2026-09-11_18-27-33_doc02.png)
+![2026-09-11_18-27-33_doc02](./asset/2026-09-11_18-27-33_doc02.png)
 <BR/>
 <BR/>
 ---
