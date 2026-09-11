@@ -158,18 +158,15 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 4. **Push** vers la branche (`git push origin ma_fonctionnalité`).
 5. Ouvre une **Pull Request**.
 
----
-  
-  
 
-![doc01](./assets/2026-09-11_18-26-16_doc01.png)  
-  
-  
 
-![doc02](./assets/2026-09-11_18-27-33_doc02.png)  
-  
-  
----
+![doc01](./assets/2026-09-11_18-26-16_doc01.png)
+
+Voici la suite de mon texte.
+
+![doc02](./assets/2026-09-11_18-27-33_doc02.png)
+
+
 
 ## 📜 **Licence**
 
