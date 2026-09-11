@@ -159,11 +159,11 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 5. Ouvre une **Pull Request**.
 
 ---
-![gendoc_01](asset/gendoc_2026-09-11_18-26-16.png)  
+![gendoc_01](asset/2026-09-11_18-26-16.png)  
   
   
   
-![gendoc_02](asset/gendoc_2026-09-11_18-27-33.png)
+![gendoc_02](asset/2026-09-11_18-27-33.png)
 ---
 
 ## 📜 **Licence**
