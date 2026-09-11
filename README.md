@@ -159,14 +159,16 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 5. Ouvre une **Pull Request**.
 
 ---
-<BR/> 
-![2026-09-11_18-26-16_doc01](./asset/2026-09-11_18-26-16_doc01.png)  
-<BR/> <BR/> 
   
-<BR/> 
-![2026-09-11_18-27-33_doc02](./asset/2026-09-11_18-27-33_doc02.png)
-<BR/>
-<BR/>
+  
+
+![doc01](./assets/2026-09-11_18-26-16_doc01.png)  
+  
+  
+
+![doc02](./assets/2026-09-11_18-27-33_doc02.png)  
+  
+  
 ---
 
 ## 📜 **Licence**
