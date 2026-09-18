@@ -17,23 +17,36 @@ fn print_help(conn: &Connection, programme: &str) -> Result<(), Box<dyn std::err
 	let mut stdout = std::io::stdout();
 
 	let mut stmt = conn.prepare("SELECT ligne, code_attribut, text FROM help WHERE programme = ?1 ORDER BY ligne")?;
-	let rows = stmt.query_map([programme], |row| {
-		Ok((row.get::<_, i32>(0)?, row.get::<_, String>(1)?, row.get::<_, String>(2)?))
-	})?;
 
+	let rows = stmt.query_map([programme], |row| {
+		Ok((
+			row.get::<_, i32>(0)?,	  // ligne
+			row.get::<_, String>(1)?, // code_attribut
+			row.get::<_, String>(2)?, // text
+		))
+	})?;
 	for row in rows {
 		let (_, code_attribut, text) = row?;
 		match code_attribut.as_str() {
-			"*" => print!("\x1B[32m\x1B[1m{}\x1B[0m\r\n", text), // \r\n pour forcer le retour à la ligne
+			"*" => print!("\x1B[32m\x1B[1m{}\x1B[0m\r\n", text),
 			"!" => print!("\x1B[33m{}\x1B[0m\r\n", text),
 			"-" => print!("  - {}\r\n", text),
 			"." => print!("  {}\r\n", text),
 			"?" => print!("\x1B[36m{}\x1B[0m\r\n", text),
+			")" => print!("\x1B[34m{}\x1B[0m\r\n", text),
 			"_" => print!("\x1B[31m\x1B[4m{}\x1B[0m\r\n", text),
+
+			"A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" |
+			"K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" |
+			"U" | "V" | "W" | "X" | "Y" | "Z" => {
+
+					print!("\x1B[33m{}\x1B[0m{}\r\n", code_attribut, text);
+			},
 			_ => print!("{} {}\r\n", code_attribut, text),
 		}
 		stdout.flush().unwrap();
 	}
+
 	Ok(())
 }
 
@@ -74,7 +87,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 		// On sépare le premier caractère du reste du texte
 		if let Some(first_char) = text.chars().next() {
 			let code_attribut = first_char.to_string();
-			let reste_texte = &text[first_char.len_utf8()..].trim();
+			let reste_texte = &text[first_char.len_utf8()..].trim_end();
 
 			match code_attribut.as_str() {
 				"*" => print!("\x1B[32m\x1B[1m{}\x1B[0m\r\n", reste_texte),
@@ -82,8 +95,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 				"-" => print!("  - {}\r\n", reste_texte),
 				"." => print!("  {}\r\n", reste_texte),
 				"?" => print!("\x1B[36m{}\x1B[0m\r\n", reste_texte),
+				")" => print!("\x1B[34m{}\x1B[0m\r\n", reste_texte),
 				"_" => print!("\x1B[31m\x1B[4m{}\x1B[0m\r\n", reste_texte),
-				_ => print!("{} {}\r\n", code_attribut, reste_texte),
+
+				"A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" |
+				"K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" |
+				"U" | "V" | "W" | "X" | "Y" | "Z" => {
+						print!("\x1B[33m{}\x1B[0m{}\r\n", first_char, reste_texte);
+				},
+				_ => print!("{} {}\r\n", code_attribut, text),
 			}
 			let _ = stdout.flush();
 		}
@@ -129,17 +149,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 	// 7. Parser chaque ligne (en commençant par la 2ème) et insérer dans SQLite
 	for line in lines {
 		// Extraire le code_attribut (premier caractère)
-		let code_attribut = line.chars().next().unwrap_or(' ').to_string();
-		// Le reste est le texte
-		let text = line[1..].trim().to_string();
 		// Insérer dans la base SQLite avec le numéro de ligne auto-incrémenté
-		conn.execute(
-			"INSERT INTO help (programme, ligne, code_attribut, text) VALUES (?1, ?2, ?3, ?4)",
-			(&programme, ligne_counter, &code_attribut, &text),
-		)?;
+		if	let Some(first_char) = line.chars().next() {
+			let code_attribut = first_char.to_string();
+			let reste_texte = &line[first_char.len_utf8()..].trim_end();
 
-		// Incrémenter le compteur de ligne
-		ligne_counter += 1;
+			conn.execute(
+				"INSERT INTO help (programme, ligne, code_attribut, text) VALUES (?1, ?2, ?3, ?4)",
+				(&programme, ligne_counter, &code_attribut, &reste_texte),
+			)?;
+
+			// Incrémenter le compteur de ligne
+			ligne_counter += 1;
+		}
 	}
 
 	// 8. Vérifier le contenu de la table

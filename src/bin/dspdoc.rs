@@ -14,6 +14,7 @@ fn get_path(lib_bd: &str) -> &'static str {
 	std::boxed::Box::leak(s.into_boxed_str())
 }
 
+
 fn print_help(conn: &Connection, programme: &str) -> Result<(), Box<dyn std::error::Error>> {
 	let mut stdout = std::io::stdout();
 
@@ -29,12 +30,20 @@ fn print_help(conn: &Connection, programme: &str) -> Result<(), Box<dyn std::err
 	for row in rows {
 		let (_, code_attribut, text) = row?;
 		match code_attribut.as_str() {
-			"*" => print!("\x1B[32m\x1B[1m{}\x1B[0m\r\n", text), // \r\n pour forcer le retour à la ligne
+			"*" => print!("\x1B[32m\x1B[1m{}\x1B[0m\r\n", text),
 			"!" => print!("\x1B[33m{}\x1B[0m\r\n", text),
 			"-" => print!("  - {}\r\n", text),
 			"." => print!("  {}\r\n", text),
 			"?" => print!("\x1B[36m{}\x1B[0m\r\n", text),
+			")" => print!("\x1B[34m{}\x1B[0m\r\n", text),
 			"_" => print!("\x1B[31m\x1B[4m{}\x1B[0m\r\n", text),
+
+			"A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" |
+			"K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" |
+			"U" | "V" | "W" | "X" | "Y" | "Z" => {
+
+					print!("\x1B[33m{}\x1B[0m{}\r\n", code_attribut, text);
+			},
 			_ => print!("{} {}\r\n", code_attribut, text),
 		}
 		stdout.flush().unwrap();

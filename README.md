@@ -1,9 +1,14 @@
-# 📜 GEN-DOC
-petite application pour générer de la documentation 
+# 📜 GEN-DOC  
+  
+  2026-09-19 mise à jour importante de gtk 0.19 
+
 
 **GEN-DOC** est une application en **Rust** qui permet de **générer, gérer et afficher de la documentation** pour tes projets.   
 Elle utilise **GTK3** pour l'interface graphique et **VTE3** pour intégrer un terminal interactif.
 
+---
+
+---
 
 ## 📌 **Fonctionnalités**
 
@@ -22,7 +27,7 @@ Il permet d'intégrer un terminal interactif dans ton application **`gen_doc`** 
 Ce terminal est optimisé pour une intégration fluide .
 Il respecte parfaitement les codes d'échappement (couleurs, curseur, etc.) et offre une expérience cohérente avec un éditeur type terminal.
   
-
+---
 
 ## 🛠 **Installation**
 
@@ -32,23 +37,23 @@ Assure-toi d'avoir les dépendances suivantes installées sur ton système :
 ```
 install gtk3 vte3
 ```
-
+---
 
 ### 2. **Cloner le projet**
-```
-clone https://github.com/as400jplpc/gen_doc.git
+```bash
+git clone https://github.com/as400jplpc/gen_doc.git
 cd gen_doc
 ```
-
+---
 
 ## 🚀 **Utilisation**
 
 ### **Lancer l'application**
-
+```
 voir  Menu.sh
-
+```
 - **`<GENDOC>`** :    
-
+---
 
 
 ## 📂 **Structure du Projet**
@@ -80,7 +85,10 @@ voir  Menu.sh
 │   ├── lib.rs
 │   └── terminal.rs		# Gestion du terminal et des commandes
 └── TermDspDoc			# Binaires compilés Treminal GTK3-VTE3
-```
+
+---
+
+---
 
 ## 🔧 **Configuration**
 cargo add gtk@0.19
@@ -152,6 +160,10 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 4. **Push** vers la branche (`git push origin ma_fonctionnalité`).
 5. Ouvre une **Pull Request**.
 
+---
+![Terminal de documentation](screenshots/gen_doc.png)
+---
+
 ## 📜 **Licence**
 
 Ce projet est sous licence  Voir le fichier [LICENSE](LICENSE) pour plus de détails.
@@ -172,11 +184,3 @@ Ce projet est sous licence  Voir le fichier [LICENSE](LICENSE) pour plus de dét
   
   
 remerciement  à IA de m'avoir aidé  Mistral  IA google  pour clarifier certaine fonction
-
-
-
-![doc01](./assets/2026-09-11_18-26-16_doc01.png)
-
-
-![doc02](./assets/2026-09-11_18-27-33_doc02.png)
-
