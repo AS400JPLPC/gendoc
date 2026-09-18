@@ -51,7 +51,7 @@ f_readPos() {    #commande de positionnement    lines + coln + text
 }
 
 # resize
-printf '\e[8;'30';'80't'
+printf '\e[8;'32';'80't'
 
 envCPP="1"
 envRUST="5"
@@ -94,7 +94,7 @@ do
     f_dsplyPos  2  24 $faGras$fcJaune'------------compile cpp-----------------'
     f_dsplyPos  3  20 $faGras$fcRouge' 1.'; f_dsplyPos  3  24 $faGras$fcGreen 'TermDspDoc'
     
-		f_dsplyPos  5  24 $faGras$fcJaune'------------compile Rust----------------'
+	f_dsplyPos  5  24 $faGras$fcJaune'------------compile Rust----------------'
     f_dsplyPos  6  20 $faGras$fcRouge'10.'; f_dsplyPos  6  24 $faGras$fcGreen 'gendoc		->gen_doc'
     f_dsplyPos  7  20 $faGras$fcRouge'11.'; f_dsplyPos  7  24 $faGras$fcGreen 'dspdoc		->gen_doc'
     f_dsplyPos  8  20 $faGras$fcRouge'12.'; f_dsplyPos  8  24 $faGras$fcGreen 'dltdoc		->gen_doc'    
@@ -107,24 +107,24 @@ do
     f_dsplyPos 14  20 $faGras$fcRouge'60.'; f_dsplyPos 14  24 $faGras$fcCyan  'EDIT FILE'
     
     
-    f_dsplyPos 17  24 $faGras$fcBleu '----------------------------------------'    
-    f_dsplyPos 18  20 $faGras$fcRouge'77.'; f_dsplyPos 18  24 $faGras$fcCyan  'cargo clean'
-
-    f_dsplyPos 20  20 $faGras$fcRouge'88.'; f_dsplyPos 20  24 $faGras$fcGreen 'Console'
+    f_dsplyPos 20  24 $faGras$fcBleu '----------------------------------------'    
+    f_dsplyPos 21  20 $faGras$fcRouge'70.'; f_dsplyPos 21  24 $faGras$fcGreen 'gen_doc  to sqlite'
+    f_dsplyPos 22  20 $faGras$fcRouge'71.'; f_dsplyPos 22  24 $faGras$fcGreen 'gen_help via sqlite'
+    f_dsplyPos 23  20 $faGras$fcRouge'72.'; f_dsplyPos 23  24 $faGras$fcGreen 'dlt_doc  via sqlite'
+    f_dsplyPos 24  20 $faGras$fcRouge'73.'; f_dsplyPos 24  24 $faGras$fcGreen 'lst_doc  via sqlite'
     
-    f_dsplyPos 22  20 $faGras$fcRouge'90.'; f_dsplyPos 22  24 $faGras$fcGreen 'gen_doc  to sqlite'
-    f_dsplyPos 23  20 $faGras$fcRouge'91.'; f_dsplyPos 23  24 $faGras$fcGreen 'gen_help via sqlite'
-    f_dsplyPos 24  20 $faGras$fcRouge'92.'; f_dsplyPos 24  24 $faGras$fcGreen 'dlt_doc  via sqlite'
-    f_dsplyPos 25  20 $faGras$fcRouge'93.'; f_dsplyPos 25  24 $faGras$fcGreen 'lst_doc  via sqlite'
-    f_dsplyPos 26  24 $faGras$fcBleu '----------------------------------------'    
-    f_dsplyPos 27  20 $faGras$fcRouge'99.'; f_dsplyPos 27 24 $faGras$fcRouge  'Exit'
+    f_dsplyPos 25  24 $faGras$fcBleu '----------------------------------------'    
+    f_dsplyPos 26  20 $faGras$fcRouge'77.'; f_dsplyPos 26  24 $faGras$fcCyan  'cargo clean'
+    f_dsplyPos 27  20 $faGras$fcRouge'88.'; f_dsplyPos 27  24 $faGras$fcGreen 'Console'
+    f_dsplyPos 28  20 $faGras$fcRouge'90.'; f_dsplyPos 28  24 $faGras$fcGreen 'Control'
+    f_dsplyPos 29  20 $faGras$fcRouge'99.'; f_dsplyPos 29 24 $faGras$fcRouge  'Exit'
 
-    f_dsplyPos 28  24 $faGras$fcBleu '----------------------------------------'
-    f_readPos  29  20  'Votre choix  :'; choix=$REPLY;
+    f_dsplyPos 30  24 $faGras$fcBleu '----------------------------------------'
+    f_readPos  31  20  'Votre choix  :'; choix=$REPLY;
 
     # Recherche de caractères non numériques dans les arguments.
     if echo $choix | tr -d [:blank:] | tr -d [:digit:] | grep . &> /dev/null; then
-        f_readPos 29 70  'erreur de saisie Enter'
+        f_readPos 31 70  'erreur de saisie Enter'
     else
 
          case "$choix" in
@@ -172,6 +172,26 @@ do
         ;;
 
 
+
+       70)
+         $LIBPROJECT"gen_doc.sh"
+        ;;
+        
+        
+        71)
+				 $LIBPROJECT"gen_help.sh"
+        ;;
+        
+        
+        72)
+				$LIBPROJECT"dlt_doc.sh"
+        ;;
+         
+        
+        73)
+				$LIBPROJECT"lst_doc.sh"
+        ;;               
+
 #?clear
         77)
         		cargo clean
@@ -184,24 +204,11 @@ do
             $HOME/.Terminal/console.sh $LIBPROJECT
         ;;
 
+#control
+
         90)
-         $LIBPROJECT"gen_doc.sh"
+			$LIBPROJECT"control.sh"
         ;;
-        
-        
-        91)
-				 $LIBPROJECT"gen_help.sh"
-        ;;
-        
-        
-        92)
-				$LIBPROJECT"dlt_doc.sh"
-        ;;
-         
-        
-        93)
-				$LIBPROJECT"lst_doc.sh"
-        ;;               
         
 # QUIT
         99)
@@ -211,7 +218,7 @@ do
     esac
     fi # fintest option
 
-printf '\e[8;'30';'80't'
+printf '\e[8;'32';'80't'
 
 done
 
